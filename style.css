@@ -1,3 +1,12 @@
+/* =========================================================
+KEY WAY REAL ESTATE
+Responsive Premium Website
+========================================================= */
+
+/* =========================
+RESET
+========================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,6 +15,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -13,6 +23,7 @@ body {
   background: #0b0b0b;
   color: #f7f6f2;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a {
@@ -27,19 +38,34 @@ select {
   font: inherit;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+VARIABLES
+========================= */
+
 :root {
   --black: #0b0b0b;
+  --black-soft: #11100e;
   --white: #f7f6f2;
   --gray: #aaa8a2;
+  --gray-dark: #68645e;
   --gold: #c99a32;
+  --gold-light: #d8b15a;
   --line: #292824;
 }
 
-/* HEADER */
+/* =========================
+HEADER
+========================= */
 
 .site-header {
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   top: 0;
   left: 0;
   right: 0;
@@ -55,9 +81,14 @@ select {
   background: rgba(11, 11, 11, 0.88);
 
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* =========================
+BRAND
+========================= */
 
 .brand {
   display: flex;
@@ -77,79 +108,127 @@ footer strong span {
 
 .brand small {
   margin-top: 7px;
+
   font-size: 7px;
   letter-spacing: 3px;
+
   color: #aaa;
 }
 
-/* NAV */
+/* =========================
+NAVIGATION
+========================= */
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 30px;
 }
 
 .nav a {
+  position: relative;
+
   font-size: 13px;
   color: #ddd;
-  transition: 0.25s;
+
+  transition: color 0.25s ease;
+}
+
+.nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--gold);
+
+  transition: width 0.25s ease;
 }
 
 .nav a:hover {
   color: var(--gold);
 }
 
-/* LANGUAGES */
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* =========================
+LANGUAGES
+========================= */
 
 .languages {
   display: flex;
+  align-items: center;
   gap: 7px;
 }
 
 .lang {
   border: 0;
   background: none;
+
   color: #777;
+
   cursor: pointer;
+
   font-size: 11px;
+
+  transition: color 0.2s ease;
+}
+
+.lang:hover {
+  color: #ddd;
 }
 
 .lang.active {
   color: var(--gold);
 }
 
-/* MOBILE MENU */
+/* =========================
+MOBILE MENU BUTTON
+========================= */
 
 .menu-btn {
   display: none;
 
+  width: 42px;
+  height: 42px;
+
   border: 0;
-  background: none;
+  background: transparent;
 
   color: white;
 
-  font-size: 24px;
+  font-size: 23px;
 
   cursor: pointer;
 }
 
-/* HERO */
+/* =========================
+HERO
+========================= */
 
 .hero {
-  min-height: 100vh;
-
   position: relative;
+
+  min-height: 100vh;
 
   display: flex;
   align-items: center;
 
-  padding: 120px 8vw;
+  padding: 120px 8vw 90px;
 
   overflow: hidden;
 }
 
 .hero-bg {
   position: absolute;
+
   inset: 0;
 
   background: radial-gradient(
@@ -162,6 +241,7 @@ footer strong span {
 
 .hero-overlay {
   position: absolute;
+
   inset: 0;
 
   background: linear-gradient(
@@ -176,6 +256,7 @@ footer strong span {
   position: relative;
   z-index: 2;
 
+  width: 100%;
   max-width: 780px;
 }
 
@@ -183,7 +264,6 @@ footer strong span {
   color: var(--gold);
 
   font-size: 10px;
-
   letter-spacing: 3px;
 
   font-weight: 600;
@@ -214,17 +294,23 @@ footer strong span {
   color: #d2d0cb;
 
   font-size: 17px;
+
+  line-height: 1.6;
 }
 
 .hero-actions {
   display: flex;
+
+  flex-wrap: wrap;
 
   gap: 14px;
 
   margin-top: 34px;
 }
 
-/* BUTTON */
+/* =========================
+BUTTONS
+========================= */
 
 .btn {
   min-height: 50px;
@@ -234,18 +320,19 @@ footer strong span {
   display: inline-flex;
 
   align-items: center;
-
   justify-content: center;
 
   border: 1px solid var(--gold);
 
   font-size: 12px;
-
   font-weight: 600;
 
   cursor: pointer;
 
-  transition: 0.25s;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
 .btn:hover {
@@ -258,13 +345,25 @@ footer strong span {
   color: #0b0b0b;
 }
 
+.btn-gold:hover {
+  background: var(--gold-light);
+}
+
 .btn-outline {
   background: transparent;
 
   color: white;
 }
 
-/* SCROLL */
+.btn-outline:hover {
+  background: var(--gold);
+
+  color: #0b0b0b;
+}
+
+/* =========================
+SCROLL HINT
+========================= */
 
 .scroll-hint {
   position: absolute;
@@ -279,7 +378,9 @@ footer strong span {
   letter-spacing: 3px;
 }
 
-/* SECTIONS */
+/* =========================
+GENERAL SECTIONS
+========================= */
 
 .section {
   padding: 120px 8vw;
@@ -307,6 +408,10 @@ footer strong span {
   color: #8b6d27;
 }
 
+/* =========================
+SPLIT LAYOUT
+========================= */
+
 .split {
   display: grid;
 
@@ -330,21 +435,28 @@ h2 span {
 }
 
 .lead {
+  margin-bottom: 25px;
+
   font-size: 20px;
 
   line-height: 1.55;
-
-  margin-bottom: 25px;
 }
 
 .muted {
-  color: #68645e;
+  color: var(--gray-dark);
 }
 
-/* IMAGE BAND */
+/* =========================
+IMAGE BAND
+========================= */
 
 .image-band {
   height: 400px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 
   background: radial-gradient(
     circle at 50% 45%,
@@ -353,11 +465,7 @@ h2 span {
     #080808 100%
   );
 
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
+  overflow: hidden;
 }
 
 .image-placeholder {
@@ -390,14 +498,17 @@ h2 span {
   font-size: 9px;
 }
 
-/* SERVICES */
+/* =========================
+SERVICES
+========================= */
 
 .heading-row {
   display: flex;
 
   justify-content: space-between;
+  align-items: flex-end;
 
-  align-items: end;
+  gap: 40px;
 
   margin-bottom: 50px;
 }
@@ -449,11 +560,11 @@ h2 span {
 }
 
 .card h3 {
+  margin-bottom: 18px;
+
   font-size: 25px;
 
   line-height: 1.15;
-
-  margin-bottom: 18px;
 }
 
 .card p {
@@ -470,13 +581,17 @@ h2 span {
   bottom: 38px;
 
   font-size: 12px;
+
+  transition: color 0.2s ease;
 }
 
 .card a:hover {
   color: var(--gold);
 }
 
-/* WHY */
+/* =========================
+WHY KEYWAY
+========================= */
 
 .dark-section {
   background: #15130f;
@@ -485,9 +600,9 @@ h2 span {
 .why-copy {
   max-width: 500px;
 
-  color: #aaa;
-
   margin-top: 30px;
+
+  color: #aaa;
 }
 
 .features {
@@ -513,9 +628,9 @@ h2 span {
 }
 
 .feature h3 {
-  font-size: 17px;
-
   margin-bottom: 6px;
+
+  font-size: 17px;
 }
 
 .feature p {
@@ -524,7 +639,9 @@ h2 span {
   font-size: 13px;
 }
 
-/* PROCESS */
+/* =========================
+PROCESS
+========================= */
 
 .process {
   display: grid;
@@ -553,9 +670,9 @@ h2 span {
 }
 
 .process h3 {
-  font-size: 18px;
-
   margin: 28px 0 10px;
+
+  font-size: 18px;
 }
 
 .process p {
@@ -564,19 +681,21 @@ h2 span {
   font-size: 13px;
 }
 
-/* CTA */
+/* =========================
+CTA
+========================= */
 
 .cta {
-  padding: 100px 8vw;
-
   display: flex;
 
   justify-content: space-between;
+  align-items: flex-end;
 
-  align-items: end;
+  gap: 50px;
+
+  padding: 100px 8vw;
 
   border-top: 1px solid var(--line);
-
   border-bottom: 1px solid var(--line);
 }
 
@@ -586,7 +705,9 @@ h2 span {
   font-size: clamp(44px, 6vw, 84px);
 }
 
-/* CONTACT */
+/* =========================
+CONTACT
+========================= */
 
 .contact-info {
   display: flex;
@@ -603,6 +724,16 @@ h2 span {
   font-size: 15px;
 
   color: #ddd;
+
+  word-break: break-word;
+}
+
+.contact-info a {
+  transition: color 0.2s ease;
+}
+
+.contact-info a:hover {
+  color: var(--gold);
 }
 
 .contact-form {
@@ -639,12 +770,22 @@ h2 span {
   color: white;
 
   outline: none;
+
+  border-radius: 0;
+
+  transition: border-color 0.2s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus,
 .contact-form select:focus {
   border-color: var(--gold);
+}
+
+.contact-form textarea {
+  min-height: 130px;
+
+  resize: vertical;
 }
 
 .form-message {
@@ -655,16 +796,19 @@ h2 span {
   font-size: 12px;
 }
 
-/* FOOTER */
+/* =========================
+FOOTER
+========================= */
 
 footer {
-  padding: 42px 8vw;
-
   display: flex;
 
   align-items: center;
-
   justify-content: space-between;
+
+  gap: 30px;
+
+  padding: 42px 8vw;
 
   border-top: 1px solid var(--line);
 
@@ -674,93 +818,46 @@ footer {
 }
 
 footer strong {
+  color: white;
+
   font-size: 21px;
 
   letter-spacing: 5px;
+}
 
-  color: white;
+footer strong span {
+  color: var(--gold);
 }
 
 footer p {
   letter-spacing: 3px;
 }
 
-/* MOBILE */
+/* =========================================================
+TABLET
+========================================================= */
 
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   .site-header {
     padding: 0 5vw;
   }
 
   .nav {
-    display: none;
-
-    position: absolute;
-
-    top: 80px;
-
-    left: 0;
-    right: 0;
-
-    padding: 25px;
-
-    flex-direction: column;
-
     gap: 20px;
-
-    background: #0b0b0b;
-
-    border-bottom: 1px solid var(--line);
   }
 
-  .nav.open {
-    display: flex;
-  }
-
-  .languages {
-    display: none;
-  }
-
-  .menu-btn {
-    display: block;
+  .nav a {
+    font-size: 12px;
   }
 
   .hero {
-    padding: 130px 6vw 80px;
-  }
-
-  .hero h1 {
-    font-size: 62px;
-
-    letter-spacing: -3px;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-
-    align-items: flex-start;
+    padding-left: 6vw;
+    padding-right: 6vw;
   }
 
   .section {
-    padding: 85px 6vw;
-  }
-
-  .split {
-    grid-template-columns: 1fr;
-
-    gap: 50px;
-  }
-
-  .image-band {
-    height: 280px;
-  }
-
-  .heading-row {
-    display: block;
-  }
-
-  .heading-row p {
-    margin-top: 20px;
+    padding-left: 6vw;
+    padding-right: 6vw;
   }
 
   .cards {
@@ -775,27 +872,470 @@ footer p {
     grid-template-columns: 1fr 1fr;
   }
 
+  .process > div {
+    margin-right: 0;
+
+    padding-right: 25px;
+  }
+
   .process > div:nth-child(2) {
     border-right: 0;
   }
 
-  .cta {
-    padding: 80px 6vw;
-
-    display: block;
+  .process > div:nth-child(-n + 2) {
+    border-bottom: 1px solid #d5d1c8;
   }
 
-  .cta .btn {
-    margin-top: 35px;
+  .cta {
+    padding-left: 6vw;
+    padding-right: 6vw;
   }
 
   footer {
-    padding: 35px 6vw;
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+  /* HEADER */
+
+  .site-header {
+    height: 70px;
+
+    padding: 0 5vw;
+  }
+
+  .brand strong {
+    font-size: 18px;
+
+    letter-spacing: 4px;
+  }
+
+  .brand small {
+    margin-top: 5px;
+
+    font-size: 6px;
+
+    letter-spacing: 2px;
+  }
+
+  /* MOBILE NAV */
+
+  .nav {
+    display: none;
+
+    position: absolute;
+
+    top: 70px;
+    left: 0;
+    right: 0;
+
+    padding: 20px 6vw 25px;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    background: rgba(11, 11, 11, 0.98);
+
+    border-bottom: 1px solid var(--line);
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    display: block;
+
+    padding: 15px 0;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #202020;
+  }
+
+  .nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .nav a::after {
+    display: none;
+  }
+
+  .languages {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* HERO */
+
+  .hero {
+    min-height: 100svh;
+
+    padding: 120px 6vw 80px;
+
+    align-items: center;
+  }
+
+  .hero-content {
+    width: 100%;
+
+    max-width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .hero h1 {
+    margin: 20px 0;
+
+    font-size: clamp(48px, 15vw, 68px);
+
+    line-height: 0.95;
+
+    letter-spacing: -3px;
+
+    max-width: 100%;
+  }
+
+  .hero-text {
+    max-width: 100%;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+
+    margin-top: 28px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+
+    max-width: 320px;
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+
+  /* SECTIONS */
+
+  .section {
+    padding: 75px 6vw;
+  }
+
+  .label {
+    margin-bottom: 35px;
+
+    font-size: 9px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  h2 {
+    font-size: clamp(38px, 11vw, 56px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+  }
+
+  .lead {
+    margin-bottom: 20px;
+
+    font-size: 17px;
+
+    line-height: 1.55;
+  }
+
+  /* IMAGE BAND */
+
+  .image-band {
+    height: 240px;
+
+    padding: 0 6vw;
+  }
+
+  .image-placeholder > div > span {
+    font-size: clamp(42px, 14vw, 75px);
+
+    letter-spacing: 7px;
+  }
+
+  .image-placeholder small {
+    font-size: 7px;
+
+    letter-spacing: 3px;
+  }
+
+  /* SERVICES */
+
+  .heading-row {
+    display: block;
+
+    margin-bottom: 35px;
+  }
+
+  .heading-row p {
+    max-width: 100%;
+
+    margin-top: 18px;
+
+    font-size: 14px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+
+    width: 100%;
+  }
+
+  .card {
+    min-height: 300px;
+
+    padding: 30px;
+  }
+
+  .card-icon {
+    margin: 40px 0 18px;
+
+    font-size: 30px;
+  }
+
+  .card h3 {
+    font-size: 23px;
+  }
+
+  .card p {
+    max-width: 100%;
+
+    font-size: 14px;
+  }
+
+  .card a {
+    bottom: 28px;
+  }
+
+  /* WHY */
+
+  .why-copy {
+    max-width: 100%;
+
+    margin-top: 20px;
+
+    font-size: 15px;
+  }
+
+  .feature {
+    grid-template-columns: 40px 1fr;
+
+    gap: 15px;
+
+    padding: 22px 0;
+  }
+
+  .feature h3 {
+    font-size: 16px;
+  }
+
+  .feature p {
+    font-size: 13px;
+  }
+
+  /* PROCESS */
+
+  .process {
+    grid-template-columns: 1fr;
+
+    border-top: 1px solid #d5d1c8;
+  }
+
+  .process > div,
+  .process > div:nth-child(2) {
+    padding: 28px 0;
+
+    margin-right: 0;
+
+    border-right: 0;
+
+    border-bottom: 1px solid #d5d1c8;
+  }
+
+  .process > div:last-child {
+    border-bottom: 0;
+  }
+
+  .process h3 {
+    margin: 18px 0 8px;
+
+    font-size: 17px;
+  }
+
+  .process p {
+    font-size: 13px;
+  }
+
+  /* CTA */
+
+  .cta {
+    padding: 70px 6vw;
 
     display: block;
   }
 
+  .cta h2 {
+    font-size: clamp(40px, 11vw, 60px);
+
+    line-height: 1;
+  }
+
+  .cta .btn {
+    width: 100%;
+
+    max-width: 300px;
+
+    margin-top: 30px;
+  }
+
+  /* CONTACT */
+
+  .contact-info {
+    margin-top: 35px;
+
+    gap: 10px;
+  }
+
+  .contact-info a,
+  .contact-info p {
+    font-size: 14px;
+
+    word-break: break-word;
+  }
+
+  .contact-form {
+    gap: 16px;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    width: 100%;
+
+    padding: 14px;
+
+    font-size: 16px;
+  }
+
+  .contact-form textarea {
+    min-height: 130px;
+
+    resize: vertical;
+  }
+
+  /* FOOTER */
+
+  footer {
+    padding: 32px 6vw;
+
+    display: block;
+
+    text-align: center;
+  }
+
+  footer strong {
+    font-size: 18px;
+  }
+
   footer p {
-    margin: 14px 0;
+    margin: 12px 0;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+  }
+}
+
+/* =========================================================
+SMALL PHONES
+========================================================= */
+
+@media (max-width: 390px) {
+  .site-header {
+    padding: 0 5vw;
+  }
+
+  .brand strong {
+    font-size: 17px;
+
+    letter-spacing: 3px;
+  }
+
+  .hero {
+    padding-top: 110px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+
+    letter-spacing: -2.5px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+  }
+
+  .hero-actions .btn {
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 38px;
+  }
+
+  .card {
+    padding: 25px;
+  }
+
+  .btn {
+    padding: 0 20px;
+  }
+
+  .feature {
+    grid-template-columns: 32px 1fr;
+
+    gap: 12px;
   }
 }
